@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Signing in</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="header"></div>
+    <div class="landing-container">
+      <div class="both">
+        <div class="one">
+          <h2>Log in</h2>
+          <form
+            action="https://ecommerce-abdullah.herokuapp.com/auth/"
+            method="POST"
+            id="form"
+          >
+            <div class="section">
+              <label for="username">username</label>
+              <input
+                type="text"
+                name="username"
+                required
+                placeholder="username"
+                id="username"
+              />
+              <label for="password">password</label>
+              <input
+                type="text"
+                name="password"
+                required
+                placeholder="password"
+                id="password"
+              />
+              <button onclick="event.preventDefault(), login()" class="button">
+                login
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="two">
+          <h2>Sign-up</h2>
+          <form
+            action="https://ecommerce-abdullah.herokuapp.com/registration/"
+            method="POST"
+            id="form"
+          >
+            <div class="section">
+              <label for="first_name">name</label>
+              <input
+                type="text"
+                name="first_name"
+                class="fname"
+                required
+                placeholder="name"
+              />
+              <label for="last_name">last name</label>
+              <input
+                type="text"
+                name="last_name"
+                class="lname"
+                required
+                placeholder="last name"
+              />
+              <label for="username">username</label>
+              <input
+                type="text"
+                name="username"
+                class="uname"
+                required
+                placeholder="username"
+              />
+              <label for="password">password</label>
+              <input
+                type="password"
+                name="password"
+                class="pword"
+                required
+                placeholder="password"
+              />
+              <label for="email">email</label>
+              <input
+                type="text"
+                name="email"
+                class="mail"
+                required
+                placeholder="example@mail.com"
+              />
+              <button class="button">Sign-up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts.js"></script>
+  </body>
+</html>
