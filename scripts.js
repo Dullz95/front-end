@@ -124,6 +124,6 @@ function addingProduct() {
       myStorage = window.localStorage;
       console.log(res["access_token"]);
       myStorage.setItem("jwt-token", res["access_token"]);
-    }));
+    });
 }
 addingProduct();
