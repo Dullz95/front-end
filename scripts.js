@@ -1,3 +1,5 @@
+const storage = window.localStorage
+
 // log in
 function login() {
   fetch("https://ecommerce-abdullah.herokuapp.com/auth", {
@@ -64,9 +66,64 @@ function getData(url) {
       products["data"].forEach((product) => {
         document.querySelector(
           ".all-info"
-        ).innerHTML += `<br><span>${product[1]}<br>${product[2]}<br>${product[3]}<br>${product[4]}<br><img src='${product[5]}' alt='product'></img>'</span>`;
+        ).innerHTML += `<div class="all"><br><span class="products-span"><img src='${product[5]}' alt='product'></img><div class="bottom"><br>Name: ${product[1]}<br>Type: ${product[2]}<br>Price: ${product[3]}<br>Quantity: ${product[4]}'</span></div></div>`;
+        
       });
     });
 }
 
 getData(base_URL);
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// adding product
+
+function addingProduct() {
+  fetch("https://ecommerce-abdullah.herokuapp.com/add-to-product-table", {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `jwt ${storage.getItem('jwt-token')}`
+    },
+    mode: 'no-cors',
+    body: JSON.stringify({
+      product_name: document.getElementById("product_name").value,
+      product_type: document.getElementById("product_type").value,
+      price: document.getElementById("price").value,
+      quantity: document.getElementById("quantity").value,
+      product_image: document.getElementById("product_image").value,
+    }),
+  })
+    .then(res => res.json()
+    .then(res => {
+      console.log(res);
+      myStorage = window.localStorage;
+      console.log(res["access_token"]);
+      myStorage.setItem("jwt-token", res["access_token"]);
+    }));
+}
+addingProduct();
