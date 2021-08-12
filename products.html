@@ -26,23 +26,36 @@
         <button id="myBtn"> Delete product</button>
         <div class="all-info"></div>
         
-        <!-- The Modal -->
+        <!-- adding Modal -->
         <div id="myModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
             <span class="close">&times;</span>
-            <form action="http://127.0.0.1:5000/add-to-product-table/" method="POST" id="form">
+            <form method="POST" id="form">
             <div class="section">
               <input type="text" name="product_name" required placeholder="Enter product name" id="product_name">
               <input type="text" name="product_type" required placeholder="Enter product type" id="product_type">
               <input type="text" name="price" required placeholder="Enter product price" id="price">
               <input type="text" name="quantity" required placeholder="Enter quantity available" id="quantity">
-              <input type="file" name="product_image" required placeholder="insert image" id="product_image">
+              <input type="file" name="product_image" required placeholder="insert image" id="product_image" onchange="convert()">
               <button onclick="event.preventDefault(), addingProduct()" class="button-modal">
                 Add Product
               </button>
+              <img src="" alt="demo" id="picture">
             </div></form>
           </div>
+        </div>
+        <button id="myBtn">Open Modal</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+        
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+          </div>
+        
         </div>
       </div>
     </div>

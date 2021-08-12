@@ -22,36 +22,18 @@ function login() {
     });
 }
 
-// // registering a user
-// function register() {
-//   fetch("https://ecommerce-abdullah.herokuapp.com/registration/", {
-//     method: "POST",
 
-//     body: JSON.stringify({
-//       first_name: document.getElementsByClassName("fname")[0].value,
-//       last_name: document.getElementsByClassName("lname")[0].value,
-//       username: document.getElementsByClassName("uname")[0].value,
-//       password: document.getElementsByClassName("pword")[0].value,
-//       email: document.getElementsByClassName("mail")[0].value,
-//     }),
-//     headers: {
-//       "Content-type": "application/json; charset=UTF-8",
-//     },
-//     mode: "cors",
-//   })
-//     .then((response) => response.json())
-//     .then((json) => console.log(json));
-// }
 
-// register();
-// function clearForm() {
-//   document.getElementsByClassName("fname")[0].value = "";
-//   document.getElementsByClassName("lname")[0].value = "";
-//   document.getElementsByClassName("uname")[0].value = "";
-//   document.getElementsByClassName("pword")[0].value = "";
-//   document.getElementsByClassName("mail")[0].value = "";
-// }
-// clearForm();
+
+function clearForm() {
+  document.getElementsByClassName("fname")[0].value = "";
+  document.getElementsByClassName("lname")[0].value = "";
+  document.getElementsByClassName("uname")[0].value = "";
+  document.getElementsByClassName("pword")[0].value = "";
+  document.getElementsByClassName("mail")[0].value = "";
+}
+
+
 // view all products
 
 let base_URL = "https://ecommerce-abdullah.herokuapp.com/view-all-products/";
@@ -75,13 +57,13 @@ function getData(url) {
 getData(base_URL);
 
 // Get the modal
-var modal = document.getElementById("myModal");
+let modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+let btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+let span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -102,28 +84,52 @@ window.onclick = function(event) {
 
 // adding product
 
+// converting input to javascript url
+function convert(){
+  let imageInput = document.getElementById("product_image").files[0];
+  let image = document.getElementById("picture");
+  const reader = new FileReader();
+  reader.addEventListener("load", function () {
+    image.src=reader.result;
+  }, false);
+
+  if (imageInput)
+  reader.readAsDataURL(imageInput);
+
+
+}
+
+
 function addingProduct() {
-  fetch("https://ecommerce-abdullah.herokuapp.com/add-to-product-table", {
-    method: "post",
+  console.log({
+    product_name: document.getElementById("product_name").value,
+    product_type: document.getElementById("product_type").value,
+    price: document.getElementById("price").value,
+    quantity: document.getElementById("quantity").value,
+    product_image: document.getElementById("picture").src,
+  })
+   
+    
+  fetch("https://ecommerce-abdullah.herokuapp.com/add-to-product-table/", {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `jwt ${storage.getItem('jwt-token')}`
     },
-    mode: 'no-cors',
     body: JSON.stringify({
       product_name: document.getElementById("product_name").value,
       product_type: document.getElementById("product_type").value,
       price: document.getElementById("price").value,
       quantity: document.getElementById("quantity").value,
-      product_image: document.getElementById("product_image").value,
+      product_image: document.getElementById("picture").src,
     }),
-  })
-    .then(res => res.json()
+   })
+    .then(res => res.json())
     .then(res => {
       console.log(res);
       myStorage = window.localStorage;
       console.log(res["access_token"]);
       myStorage.setItem("jwt-token", res["access_token"]);
-    }));
+    });
 }
-addingProduct();
+// addingProduct();
