@@ -132,4 +132,8 @@ function addingProduct() {
       myStorage.setItem("jwt-token", res["access_token"]);
     });
 }
+<<<<<<< HEAD
 // addingProduct();
+=======
+addingProduct();
+>>>>>>> cd3c01bc9d9bb27159f8e72d4e07ee34dd0f35d7
