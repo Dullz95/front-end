@@ -18,14 +18,43 @@
       <a href="#about">Sign-in</a>
     </div>
     <div class="page-container">
-      <div class="control-panel"></div>
+      <h2>Control Panel</h2>
+      <h1>Catalogue</h1>
+      
       <div class="products-container">
-        <h1>Catalogue</h1>
-        <button id="myBtn">Add product</button>
-        <button id="myBtn">Update product</button>
-        <button id="myBtn"> Delete product</button>
-        <div class="all-info"></div>
         
+        <div class="side">
+          <form action="">
+            
+            <h2>Add product to Catalogue</h2>
+      <button id="myBtn" >Add</button>
+            <h2>Update existing product</h2>
+            <p>Enter the product ID of the product you'd like to update</p>
+            <input type="text" class="product-id">
+            
+          </form>
+          <form method="PUT" id="update-form">
+            <input type="text" name="product_name" required placeholder="Enter product name" id="product_name">
+                <input type="text" name="product_type" required placeholder="Enter product type" id="product_type">
+                <input type="text" name="price" required placeholder="Enter product price" id="price">
+                <input type="text" name="quantity" required placeholder="Enter quantity available" id="quantity">
+                <input type="file" name="product_image" required placeholder="insert image" id="up_product_image" onchange="convert(2)">
+                <button onclick="event.preventDefault(), updatingProduct()" class="button-modal" >
+                  Update product
+                </button>
+  
+          </form>
+          <form action="">
+            <h2>Delete existing product</h2>
+            <p>Enter the product ID of the product you'd like to update</p>
+            <input type="text" class="deleteProductId">
+            <button onclick="event.preventDefault(), deleteProduct()">Delete</button>
+            
+          </form>
+
+        </div>       
+        
+        <div class="all-info"></div>
         <!-- adding Modal -->
         <div id="myModal" class="modal">
           <!-- Modal content -->
@@ -33,11 +62,11 @@
             <span class="close">&times;</span>
             <form method="POST" id="form">
             <div class="section">
-              <input type="text" name="product_name" required placeholder="Enter product name" id="product_name">
-              <input type="text" name="product_type" required placeholder="Enter product type" id="product_type">
-              <input type="text" name="price" required placeholder="Enter product price" id="price">
-              <input type="text" name="quantity" required placeholder="Enter quantity available" id="quantity">
-              <input type="file" name="product_image" required placeholder="insert image" id="product_image" onchange="convert()">
+              <input type="text" name="product_name" required placeholder="Enter product name" id="add_product_name">
+              <input type="text" name="product_type" required placeholder="Enter product type" id="add_product_type">
+              <input type="text" name="price" required placeholder="Enter product price" id="add_price">
+              <input type="text" name="quantity" required placeholder="Enter quantity available" id="add_quantity">
+              <input type="file" name="product_image" required placeholder="insert image" id="add_product_image" class="product_img" onchange="convert(1)">
               <button onclick="event.preventDefault(), addingProduct()" class="button-modal">
                 Add Product
               </button>
@@ -45,19 +74,8 @@
             </div></form>
           </div>
         </div>
-        <button id="myBtn">Open Modal</button>
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-        
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Some text in the Modal..</p>
-          </div>
-        
-        </div>
       </div>
+      
     </div>
     <script src="./scripts.js"></script>
   </body>

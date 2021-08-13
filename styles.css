@@ -52,6 +52,7 @@ form label {
   box-shadow: 5px 5px 5px gray;
   background-image: url(./images/pexels-matej-776336\(1\).jpg);
 }
+
 .landing-container h2 {
   text-align: center;
   margin-top: 10px;
@@ -67,6 +68,9 @@ form label {
 }
 #form {
   align-items: center;
+}
+#update-form{
+  width:80%; 
 }
 
 .button {
@@ -122,13 +126,15 @@ form label {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 10px 10%; 
+  gap: 20px;
+  /* padding: 10px 10%;  */
   margin-top: 2%;
-  flex: 1 1 150px; /* stretch: */
-  flex: 0 1 150px; /* no stretch: */
+  /* flex: 1 1 150px; /* stretch: */
+  /* flex: 0 1 150px; no stretch: */ 
   font-size: 14px;
   border-radius: 10px;
+  /* margin-left: 150px; */
+  margin-right: 200px;
 }
 
 .all-info img {
@@ -148,6 +154,15 @@ form label {
 }
 #picture{
   display: none;
+}
+.products-container{
+  display: flex;
+}
+.page-container h1 {
+  text-align: center;
+}
+.product-id{
+  width: 10%;
 }
 .products-span{
   /* display: flex;
@@ -179,6 +194,7 @@ form label {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+
 /* Modal Content/Box */
 .modal-content {
   background-color: lightskyblue;
@@ -197,9 +213,32 @@ form label {
   font-weight: bold;
 }
 
+
 .close:hover,
 .close:focus {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* control panel */
+.side{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 65vh;
+  background-color: lightskyblue;
+  /* margin-left: 10px; */
+  margin-top: 2%;
+  align-items: center; 
+  padding: 10px;
+}
+.side button{
+  margin-top: 2%;
+  width: 20%;
+  border-radius: 10px;
+
+}
+.side h2{
+  margin-top: 2%;
 }

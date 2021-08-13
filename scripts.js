@@ -15,9 +15,8 @@ function login() {
     .then((res) => res.json())
     .then((res) => {
       console.log(res);
-      myStorage = window.localStorage;
       console.log(res["access_token"]);
-      myStorage.setItem("jwt-token", res["access_token"]);
+      storage.setItem("jwt-token", res["access_token"]);
       window.location.href = "./products.html";
     });
 }
@@ -25,16 +24,17 @@ function login() {
 
 
 
-function clearForm() {
-  document.getElementsByClassName("fname")[0].value = "";
-  document.getElementsByClassName("lname")[0].value = "";
-  document.getElementsByClassName("uname")[0].value = "";
-  document.getElementsByClassName("pword")[0].value = "";
-  document.getElementsByClassName("mail")[0].value = "";
-}
+// function clearForm() {
+//   document.getElementsByClassName("fname")[0].value = "";
+//   document.getElementsByClassName("lname")[0].value = "";
+//   document.getElementsByClassName("uname")[0].value = "";
+//   document.getElementsByClassName("pword")[0].value = "";
+//   document.getElementsByClassName("mail")[0].value = "";
+// }
 
 
 // view all products
+// let products = []
 
 let base_URL = "https://ecommerce-abdullah.herokuapp.com/view-all-products/";
 
@@ -48,7 +48,7 @@ function getData(url) {
       products["data"].forEach((product) => {
         document.querySelector(
           ".all-info"
-        ).innerHTML += `<div class="all"><br><span class="products-span"><img src='${product[5]}' alt='product'></img><div class="bottom"><br>Name: ${product[1]}<br>Type: ${product[2]}<br>Price: ${product[3]}<br>Quantity: ${product[4]}'</span></div></div>`;
+        ).innerHTML += `<div class="all"><br><span class="products-span"><img src='${product[5]}' alt='product'></img><div class="bottom"><br>ID: ${product[0]}<br>Name: ${product[1]}<br>Type: ${product[2]}<br>Price: ${product[3]}<br>Quantity: ${product[4]}'</span></div></div>`;
         
       });
     });
@@ -59,11 +59,13 @@ getData(base_URL);
 // Get the modal
 let modal = document.getElementById("myModal");
 
+
 // Get the button that opens the modal
 let btn = document.getElementById("myBtn");
 
 // Get the <span> element that closes the modal
 let span = document.getElementsByClassName("close")[0];
+
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -85,8 +87,16 @@ window.onclick = function(event) {
 // adding product
 
 // converting input to javascript url
-function convert(){
-  let imageInput = document.getElementById("product_image").files[0];
+function convert(opt){
+  let option = opt
+  let imageInput
+  if (option == 1){
+    imageInput = document.getElementById("add_product_image").files[0]  
+  }
+  if (option == 2){
+    imageInput = document.getElementById("up_product_image").files[0]
+  }
+  console.log(imageInput)
   let image = document.getElementById("picture");
   const reader = new FileReader();
   reader.addEventListener("load", function () {
@@ -102,19 +112,58 @@ function convert(){
 
 function addingProduct() {
   console.log({
+    product_name: document.getElementById("add_product_name").value,
+    product_type: document.getElementById("add_product_type").value,
+    price: document.getElementById("add_price").value,
+    quantity: document.getElementById("add_quantity").value,
+    product_image: document.getElementById("picture").src,
+  })
+    
+  fetch("https://ecommerce-abdullah.herokuapp.com/add-to-product-table/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      // "Authorization": `jwt ${storage.getItem('jwt-token')}`
+    },
+    body: JSON.stringify({
+      product_name: document.getElementById("add_product_name").value,
+      product_type: document.getElementById("add_product_type").value,
+      price: document.getElementById("add_price").value,
+      quantity: document.getElementById("add_quantity").value,
+      product_image: document.querySelector("#picture").src,
+    }),
+   })
+    .then(res => res.json())
+    .then(res => {
+      console.log(res);
+      // myStorage = window.localStorage;
+      // console.log(res["access_token"]);
+      // myStorage.setItem("jwt-token", res["access_token"]);
+    });
+}
+
+
+
+// updating product
+
+function updatingProduct() {
+  console.log({
     product_name: document.getElementById("product_name").value,
     product_type: document.getElementById("product_type").value,
     price: document.getElementById("price").value,
     quantity: document.getElementById("quantity").value,
     product_image: document.getElementById("picture").src,
   })
-   
+  
+  let productId = document.querySelector(".product-id").value;
+  console.log(productId)
+  // console.log(storage.getItem('jwt-token'))
     
-  fetch("https://ecommerce-abdullah.herokuapp.com/add-to-product-table/", {
-    method: "POST",
+  fetch(`https://ecommerce-abdullah.herokuapp.com/updating-products/${productId}`, {
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": `jwt ${storage.getItem('jwt-token')}`
+      // "Authorization": `jwt ${storage.getItem('jwt-token')}`
     },
     body: JSON.stringify({
       product_name: document.getElementById("product_name").value,
@@ -127,13 +176,25 @@ function addingProduct() {
     .then(res => res.json())
     .then(res => {
       console.log(res);
-      myStorage = window.localStorage;
-      console.log(res["access_token"]);
-      myStorage.setItem("jwt-token", res["access_token"]);
     });
 }
-<<<<<<< HEAD
-// addingProduct();
-=======
-addingProduct();
->>>>>>> cd3c01bc9d9bb27159f8e72d4e07ee34dd0f35d7
+
+// deleting a product
+
+function deleteProduct() {
+  let deleteProductId = document.querySelector(".deleteProductId").value;
+  fetch(`https://ecommerce-abdullah.herokuapp.com/delete-product/${deleteProductId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+      // console.log(res["access_token"]);
+      // storage.setItem("jwt-token", res["access_token"]);
+      // window.location.href = "./products.html";
+    });
+}
+
