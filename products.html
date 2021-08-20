@@ -9,28 +9,26 @@
     <title>Document</title>
   </head>
   <body>
-    <div class="header">
-    </div>
+    
     <div class="topnav">
-      <a class="active" href="#home">Home</a>
-      <a href="#view-profile">View Profile</a>
-      <a href="#contact">Products</a>
-      <a href="#about">Sign-in</a>
+      <a href="./profile.html">View Profile</a>
+      <a href="./cart.html">View Cart</a>
+      <a href="./products.html">Products</a>
+      <a onclick="event.preventDefault, signOut()" href="./index.html">Sign out</a>
     </div>
     <div class="page-container">
-      <h2>Control Panel</h2>
       <h1>Catalogue</h1>
       
       <div class="products-container">
         
         <div class="side">
+          <h2>Add product</h2>
+          <button id="myBtn" >Add</button>
           <form action="">
             
-            <h2>Add product to Catalogue</h2>
-      <button id="myBtn" >Add</button>
-            <h2>Update existing product</h2>
-            <p>Enter the product ID of the product you'd like to update</p>
-            <input type="text" class="product-id">
+           
+            <h2>Update product</h2>
+            <input type="text" class="product-id" placeholder="Enter product ID" required>
             
           </form>
           <form method="PUT" id="update-form">
@@ -40,21 +38,22 @@
                 <input type="text" name="quantity" required placeholder="Enter quantity available" id="quantity">
                 <input type="file" name="product_image" required placeholder="insert image" id="up_product_image" onchange="convert(2)">
                 <button onclick="event.preventDefault(), updatingProduct()" class="button-modal" >
-                  Update product
+                  Update 
                 </button>
   
           </form>
-          <form action="">
-            <h2>Delete existing product</h2>
-            <p>Enter the product ID of the product you'd like to update</p>
-            <input type="text" class="deleteProductId">
+          <form action="GET">
+            <h2>Delete product</h2>
+            
+            <input type="text" class="deleteProductId" placeholder="Enter product ID">
             <button onclick="event.preventDefault(), deleteProduct()">Delete</button>
             
           </form>
 
         </div>       
         
-        <div class="all-info"></div>
+        <div class="all-info">
+        </div>
         <!-- adding Modal -->
         <div id="myModal" class="modal">
           <!-- Modal content -->
@@ -78,5 +77,6 @@
       
     </div>
     <script src="./scripts.js"></script>
+    <script src="./products.js"></script>
   </body>
 </html>

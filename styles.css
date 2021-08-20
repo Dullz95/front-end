@@ -14,7 +14,7 @@ body {
   justify-content: flex-end;
 
   height: 8vh;
-  background-color: lightgray;
+  background-color: lightskyblue;
   color: black;
   font-size: 50px;
   text-align: center;
@@ -47,18 +47,19 @@ form label {
   margin-top: 10%;
   margin-left: 32%;
   /* border: 2px solid black; */
-  background-color: white;
+  background-color: lightskyblue;
   border-radius: 5%;
   box-shadow: 5px 5px 5px gray;
-  background-image: url(./images/pexels-matej-776336\(1\).jpg);
+  /* background-image: url(./images/pexels-matej-776336\(1\).jpg); */
 }
 
 .landing-container h2 {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   color: black;
   text-transform: uppercase;
+  padding-top: 20px;
 }
 
 .description {
@@ -90,9 +91,9 @@ form label {
   color: black;
   background-color: lightgray;
 }
-.both {
+/* .both {
   background-color: rgba(0, 0, 0, 0.2);
-}
+} */
 /* product page css */
 /* Add a black background color to the top navigation */
 .topnav {
@@ -103,7 +104,7 @@ form label {
 /* Style the links inside the navigation bar */
 .topnav a {
   float: right;
-  color: #f2f2f2;
+  color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -112,8 +113,8 @@ form label {
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: rgb(138, 119, 119);
-  color:gray;
+  background-color: white;
+  color: black;
 }
 
 /* Add a color to the active/current link */
@@ -155,14 +156,21 @@ form label {
 #picture{
   display: none;
 }
+.product-id{
+  width: 80%;
+}
 .products-container{
   display: flex;
 }
 .page-container h1 {
   text-align: center;
+  margin-top: 3%;
 }
-.product-id{
-  width: 10%;
+.page-container input{
+  /* width: 40%; */
+}
+.page-container button{
+  width: 40%;
 }
 .products-span{
   /* display: flex;
@@ -230,15 +238,129 @@ form label {
   background-color: lightskyblue;
   /* margin-left: 10px; */
   margin-top: 2%;
-  align-items: center; 
+  /* align-items: center;  */
   padding: 10px;
+  padding-left: 40px;
+  width: 18%;
+  margin-right: 300px;
+  height: 65vh;
+  border-radius: 10px;
+  position: relative;
 }
 .side button{
   margin-top: 2%;
-  width: 20%;
+  padding: 2%;
+  
   border-radius: 10px;
+  margin-bottom: 20px;
 
+}
+.side button:hover{
+  color: white ;
+  background-color: lightskyblue;
+  border-color: lightskyblue;
+}
+.deleteProductId{
+  width: 80%;
 }
 .side h2{
   margin-top: 2%;
+}
+
+/* profile page styling */
+.profile-info{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  
+}
+
+.profile-container{
+  width: 40%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-left: 30%;
+  margin-top:5%;
+  padding: 20px;
+  /* gap: 50px; */
+  border-radius: 10px;
+  background-color: lightskyblue;
+}
+.profile-container h2{
+  text-align: center;
+  
+}
+.profile-container button{
+  width: 20%;
+  margin-left: 40%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  padding: 2%;
+  
+}
+.profile-container button:hover{
+  background-color: lightskyblue;
+  color: white;
+}
+.edit-profile{
+  width:50%;
+  margin-left: 25%;
+}
+.remove-profile{
+  width:50%;
+  margin-left: 25%;
+}
+.email{
+  width:50%;
+  margin-left: 25%;
+}
+
+/* cart styling */
+
+.cartImg{
+  width:100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.cart-items{
+  width: 10%;
+  margin-left: 30%;
+}
+
+.mainh{
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.clearc{
+  margin-top: 5%;
+  width: 10%;
+  margin-left: 45%;
+  padding: 2%;
+  border-radius: 10px;
+  background-color: white;
+}
+.clearc:hover{
+color: white;
+background-color: lightskyblue;
+}
+
+.deleteItem{
+  width: 100%;
+  background-color: white;
+}
+.deleteItem:hover{
+  color: white;
+background-color: lightskyblue;
 }

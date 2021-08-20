@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Profile</title>
+</head>
+<body>
+  <div class="topnav">
+    <a href="./profile.html">View Profile</a>
+    <a href="./cart.html">View Cart</a>
+    <a href="./products.html">Products</a>
+    <a  onclick="event.preventDefault, signOut()"href="./index.html">Sign-out</a>
+  </div>
+  <div class="profile-container">
+    <form action="GET">
+      <h2>View profile</h2>
+      <input type="text" class="email" placeholder="Enter email">
+      <button onclick=" getData()">Get profile</button>
+  </form>
+  <div class="profile-info"></div>
+  <form>
+    <h2>Update profile</h2>
+      <input type="text" class="edit-profile" placeholder="enter email">
+  </form>
+  <!-- Trigger/Open The Modal -->
+<button id="myBtn">Update Profile</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+<!-- Modal content -->
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <form method="PUT">
+      <div class="section">
+          <label for="first_name">name</label>
+          <input
+            type="text"
+            id="first_name"
+            class="fname"
+            required
+            placeholder="name"
+          />
+          <label for="last_name">last name</label>
+          <input
+            type="text"
+            id="last_name"
+            class="lname"
+            required
+            placeholder="last name"
+          />
+          <label for="username">username</label>
+          <input
+            type="text"
+            id="username"
+            class="uname"
+            required
+            placeholder="username"
+          />
+          <label for="password">password</label>
+          <input
+            type="password"
+            id="password"
+            class="pword"
+            required
+            placeholder="password"
+          />
+          <label for="email">email</label>
+          <input
+            type="text"
+            id="email"
+            class="mail"
+            required
+            placeholder="example@mail.com"
+          />
+          <button class="button" onclick=" event.preventDefault(), updatingProfile()">Edit-User</button>
+        </div>
+  </form>
+</div>
+
+
+</div>
+<form>
+  <h2>Delete Profile</h2>
+  <input type="text" class="remove-profile" placeholder="enter emial">
+  <button onclick="event.preventDefault(), deleteProfile()">delete-profile</button>
+</form>
+
+  </div>
+   
+<!-- <script src="./scripts.js"></script> -->
+ <script src="./profile.js"></script>    
+</body>
+</html>
